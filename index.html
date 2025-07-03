@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Courage Managérial - Abylon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Calibri', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e5f5b 0%, #2a7a75 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 20h10v10H20zM40 40h10v10H40zM60 20h10v10H60zM80 40h10v10H80z' fill='%23ffffff' opacity='0.05'/%3E%3C/svg%3E") repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header-text .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-visual {
+            background: linear-gradient(45deg, #94c11f, #ee7601);
+            height: 300px;
+            margin: 2rem 0;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-visual::before {
+            content: '🦁';
+            font-size: 8rem;
+            opacity: 0.3;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Programme Section */
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #473c32;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #94c11f;
+            padding-bottom: 0.5rem;
+        }
+
+        .accordion {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .accordion-item {
+            border: 1px solid #e0e0e0;
+        }
+
+        .accordion-header {
+            background: linear-gradient(135deg, #94c11f, #a8d435);
+            color: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #a8d435, #94c11f);
+        }
+
+        .accordion-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Informations pratiques */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #94c11f;
+        }
+
+        .info-card h3 {
+            color: #473c32;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card .icon {
+            font-size: 1.5rem;
+            color: #94c11f;
+        }
+
+        /* Map */
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .map-placeholder {
+            height: 100%;
+            background: linear-gradient(45deg, #e0e0e0, #f0f0f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.1rem;
+            border: 2px dashed #ccc;
+        }
+
+        /* Footer */
+        .footer {
+            background: #473c32;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 1rem;
+            color: #94c11f;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item .icon {
+            color: #ee7601;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-visual {
+                height: 250px;
+            }
+
+            .hero-text h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles */
+        .accordion-header:focus,
+        button:focus,
+        a:focus {
+            outline: 3px solid #94c11f;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div style="background: #1e5f5b; color: white; padding: 1rem; border-radius: 5px; font-weight: bold; text-align: center;">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">∩∩</div>
+                        <div style="font-size: 1.2rem;">ABYLON</div>
+                    </div>
+                </div>
+                <div class="header-text">
+                    <h1>Courage Managérial</h1>
+                    <p class="subtitle">Formation intra-entreprise • 8 juillet 2025</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Visual -->
+    <section class="hero-visual">
+        <div class="hero-text">
+            <h2>Développez votre leadership avec courage</h2>
+            <p>Une formation pour affirmer votre style managérial et prendre des décisions difficiles</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Contexte et objectifs -->
+        <section class="section">
+            <h2>🎯 Contexte et objectifs</h2>
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; border-left: 4px solid #94c11f;">
+                <h3 style="color: #473c32; margin-bottom: 1rem;">Contexte</h3>
+                <p>Les organisations évoluent dans un environnement <strong>VUCA</strong> (Volatilité, Incertitude, Complexité, Ambiguïté). Les managers doivent aujourd'hui prendre des décisions rapides, parfois risquées, et fédérer leurs équipes autour d'objectifs ambitieux.</p>
+            </div>
+            
+            <h3 style="color: #473c32; margin-bottom: 1rem;">Objectifs pédagogiques</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <div style="background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-top: 3px solid #94c11f;">
+                    <span style="color: #94c11f; font-size: 1.2rem;">✓</span> Comprendre les leviers du courage managérial
+                </div>
+                <div style="background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-top: 3px solid #ee7601;">
+                    <span style="color: #ee7601; font-size: 1.2rem;">✓</span> Identifier ses freins et construire un plan d'action personnel
+                </div>
+                <div style="background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-top: 3px solid #473c32;">
+                    <span style="color: #473c32; font-size: 1.2rem;">✓</span> Développer son assertivité dans la prise de parole
+                </div>
+                <div style="background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-top: 3px solid #94c11f;">
+                    <span style="color: #94c11f; font-size: 1.2rem;">✓</span> Mettre en place un climat de confiance favorisant l'innovation
+                </div>
+            </div>
+        </section>
+
+        <!-- Programme -->
+        <section class="section">
+            <h2>📚 Programme détaillé</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(0)">
+                        <h3>Module 1 : Fundamentals du courage <span style="color: #94c11f; font-weight: normal;">(½ journée)</span></h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 1rem;">
+                            <div>
+                                <h4 style="color: #473c32; margin-bottom: 0.5rem;">Contenu principal</h4>
+                                <ul>
+                                    <li>Définition du courage managérial</li>
+                                    <li>Cadre VUCA</li>
+                                    <li>Étude de cas</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: #473c32; margin-bottom: 0.5rem;">Méthode</h4>
+                                <p style="color: #666; font-style: italic;">Apports théoriques, exercices de réflexion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(1)">
+                        <h3>Module 2 : Connaissance de soi <span style="color: #94c11f; font-weight: normal;">(½ journée)</span></h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 1rem;">
+                            <div>
+                                <h4 style="color: #473c32; margin-bottom: 0.5rem;">Contenu principal</h4>
+                                <ul>
+                                    <li>Identification des valeurs</li>
+                                    <li>Analyse des situations de zone de confort</li>
+                                    <li>Plan d'action individuel</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: #473c32; margin-bottom: 0.5rem;">Méthode</h4>
+                                <p style="color: #666; font-style: italic;">Tests, retours d'expérience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(2)">
+                        <h3>Module 3 : Communication assertive <span style="color: #94c11f; font-weight: normal;">(1 journée)</span></h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 1rem;">
+                            <div>
+                                <h4 style="color: #473c32; margin-bottom: 0.5rem;">Contenu principal</h4>
+                                <ul>
+                                    <li>Techniques de feedback constructif</li>
+                                    <li>Gestion des conflits</li>
+                                    <li>Jeux de rôle</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: #473c32; margin-bottom: 0.5rem;">Méthode</h4>
+                                <p style="color: #666; font-style: italic;">Ateliers pratiques</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(3)">
+                        <h3>Module 4 : Leadership inspirant <span style="color: #94c11f; font-weight: normal;">(1 journée)</span></h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 1rem;">
+                            <div>
+                                <h4 style="color: #473c32; margin-bottom: 0.5rem;">Contenu principal</h4>
+                                <ul>
+                                    <li>Posture de leader</li>
+                                    <li>Narration influente</li>
+                                    <li>Coaching d'équipe</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: #473c32; margin-bottom: 0.5rem;">Méthode</h4>
+                                <p style="color: #666; font-style: italic;">Mises en situation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Méthodologie et public -->
+        <section class="section">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3 style="color: #473c32; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="color: #94c11f; font-size: 1.5rem;">🎯</span> Méthodologie
+                    </h3>
+                    <ul style="color: #666; line-height: 1.8;">
+                        <li>Alternance d'apports théoriques et d'exercices pratiques</li>
+                        <li>Travail en sous-groupes et plénières</li>
+                        <li>Support digital remis à chaque participant</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #473c32; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="color: #ee7601; font-size: 1.5rem;">👥</span> Public visé
+                    </h3>
+                    <p style="color: #666; line-height: 1.8;">Managers de proximité, chefs de projet et pilotes d'équipes</p>
+                </div>
+            </div>
+        </section>
